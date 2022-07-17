@@ -1,8 +1,8 @@
 import React from "react";
 import { Routes } from "react-router";
-import { Redirect } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
-// import HYDiscover from "../pages/discover";
+import Discover from "../pages/discover";
 // import HYRecommend from "../pages/discover/c-pages/recommend";
 // import HYRanking from "../pages/discover/c-pages/ranking";
 // import HYSongs from "../pages/discover/c-pages/songs";
@@ -11,8 +11,8 @@ import { Redirect } from "react-router-dom";
 // import HYAlbum from "../pages/discover/c-pages/album";
 // import HYPlayer from "../pages/player";
 
-// import HYFriend from "../pages/friend";
-// import HYMine from "../pages/mine";
+import Friend from "../pages/friends";
+import Mine from "../pages/mine";
 
 // const HYDiscover = React.lazy(_ => import("../pages/discover"));
 // const HYRecommend = React.lazy(_ => import("../pages/discover/c-pages/recommend"));
@@ -26,25 +26,34 @@ import { Redirect } from "react-router-dom";
 // const HYFriend = React.lazy(_ => import("../pages/friend"));
 // const HYMine = React.lazy(_ => import("../pages/mine"));
 
-// export default [
-//   {
-//     path: "/",
-//     exact: true,
-//     render: () => (
-//       <Redirect to="/discover"/>
-//     )
-//   },
-//   {
-//     path: "/discover",
-//     component: HYDiscover,
-//     routes: [
-//       {
-//         path: "/discover",
-//         exact: true,
-//         render: () => (
-//           <Redirect to={"/discover/artist"}/>
-//         )
-//       },
+export default [
+  {
+    path: "/",
+    exact: true,
+    render: () => <Navigate to="/discover" />,
+  },
+  {
+    path: "/discover",
+    component: Discover,
+    routes: [
+      {
+        path: "/discover",
+        exact: true,
+        render: () => <Navigate to={"/discover/artist"} />,
+      },
+    ],
+  },
+
+  {
+    path: "/friend",
+    component: Friend,
+  },
+  {
+    path: "/mine",
+    component: Mine,
+  },
+];
+
 //       {
 //         path: "/discover/recommend",
 //         component: HYRecommend
@@ -86,4 +95,4 @@ import { Redirect } from "react-router-dom";
 //   }
 // ]
 
-export default Routes;
+// export default Routes;
